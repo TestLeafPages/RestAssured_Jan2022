@@ -1,11 +1,9 @@
-package basic;
+package learnassert;
 
-import java.util.List;
-
+import static org.hamcrest.Matchers.*;
 import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class CreateIncidentWithBodyAsString {
@@ -19,17 +17,24 @@ public class CreateIncidentWithBodyAsString {
 //		Step 3: Request type (post) ctrl + 2, l
 		Response response = RestAssured 
 				.given()
-//				.log().all()
+				.log().all()
 				.contentType(ContentType.JSON)
 				.body("{\"short_description\":\"Create Inccident with body as string\",\"category\":\"software\"}")
-				.post();
+				.post()
+				.then()
+				.statusCode(201)
+				//path of the field, value for the field
+				// will work for 1st match
+				.body("result.short_description", containsString("Create Inccident with body"))
+				.body("result.category", equalTo("software"))
+				.extract().response();
 //		Step 4: Validate (Response -> Status code -> 201)
 		System.out.println(response.statusCode());
 //		Step 5: print Response
 		response.prettyPrint();
 		
-		
-		
+		/*String asString = response.asString();
+		if(asString.equals(""))*/
 		
 		
 		

@@ -25,7 +25,7 @@ public class CreateIncidentWithBodyAsFile {
 	@Test(dataProvider = "Fetchdata")
 	public void cerateIncident(String filePath) {
 		RestAssured.baseURI = "https://dev79195.service-now.com/api/now/table/incident";
-		RestAssured.authentication = RestAssured.basic("admin", "KqEbzmfZS81W");
+		RestAssured.authentication = RestAssured.preemptive().basic("admin", "KqEbzmfZS81W");
 //		File file = new File("./data/CreateIncident.json");
 		Response response = RestAssured 
 				.given()

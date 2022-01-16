@@ -13,9 +13,9 @@ public class CreateIncidentWithoutBody {
 	@Test
 	public void cerateIncident() {
 //		Step 1: Set EndPoint / URI for the server
-		RestAssured.baseURI = "https://dev79195.service-now.com/api/now/table/incident";
+		RestAssured.baseURI = "https://dev113226.service-now.com/api/now/table/incident";
 //		Step 2: Set Authentication (Basic Auth)
-		RestAssured.authentication = RestAssured.basic("admin", "KqEbzmfZS81W");
+		RestAssured.authentication = RestAssured.basic("admin", "Tuna@123");
 //		Step 3: Request type (post) ctrl + 2, l
 		Response response = RestAssured 
 				.given()
